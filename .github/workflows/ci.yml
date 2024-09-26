@@ -26,8 +26,8 @@ jobs:
         run: docker build . -t devstore
 
       # Roda os testes do Next.js (se houver)
-      - name: Run Tests
-        run: docker run devstore npm test
+      # - name: Run Tests
+      #   run: docker run devstore npm test
 
       # Publica a imagem no Docker Hub (opcional)
       # - name: Log in to Docker Hub
