@@ -3,8 +3,8 @@ FROM node:20-alpine
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Copia os arquivos necessários para instalar as dependências
-COPY package*.json ./
+# Copie apenas os arquivos de dependência primeiro para otimizar o cache do Docker
+COPY package.json package-lock.json ./
 
 # Instala as dependências
 RUN npm install
@@ -16,7 +16,7 @@ COPY . .
 EXPOSE 3000
 
 # # Comando para iniciar a aplicação
-# CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]
 
 # Comando para iniciar a aplicação, verificando e instalando dependências antes de rodar
-CMD ["sh", "-c", "npm install && npm run dev"]
+# CMD ["sh", "-c", "npm install && npm run dev"]
