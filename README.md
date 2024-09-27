@@ -45,3 +45,7 @@ npm run build
 
 <!-- para testar: -->
 npm run start
+
+
+
+og:image
