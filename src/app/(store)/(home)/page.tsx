@@ -9,9 +9,10 @@ import Link from "next/link";
 
 async function getFeaturedProducts(): Promise<Product[]>{
   const response = await api('/products/featured', {
-    next: {
-      revalidate: 60 * 60, // 1 hour - para buscar novamente as informações na api
-    }
+    // next: {
+    //   revalidate: 60 * 60, // 1 hour - para buscar novamente as informações na api
+    // }
+    cache: 'no-store'
   })
 
   const products = await response.json()
