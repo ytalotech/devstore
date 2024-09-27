@@ -9,10 +9,10 @@ import Link from "next/link";
 
 async function getFeaturedProducts(): Promise<Product[]>{
   const response = await api('/products/featured', {
-    // next: {
-    //   revalidate: 60 * 60, // 1 hour - para buscar novamente as informações na api
-    // }
-    cache: 'no-store'
+    next: {
+      revalidate: 60 * 60, // 1 hour - para buscar novamente as informações na api
+    }
+    // cache: 'no-store'
   })
 
   const products = await response.json()
@@ -48,7 +48,7 @@ export default async function Home() {
       {
         otherProducts.map(product => {
           return (
-            <Link key={product.id} href={`/product/${product.id}`} className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end">
+            <Link key={product.id} href={`/product/${product.slug}`} className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end">
               <Image src={product.image} className="group-hover:scale-105 transition-transform duration-500" width={920} height={920} quality={100} alt="" />
 
               <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[200px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">

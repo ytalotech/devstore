@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import data from '../data.json';
 
 export async function GET(){
