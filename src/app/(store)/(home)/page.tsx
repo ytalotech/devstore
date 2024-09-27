@@ -1,5 +1,6 @@
 import { api } from "@/data/api";
 import { Product } from "@/data/types/product";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +8,7 @@ import Link from "next/link";
  * Cache & Memorization
  * */
 
-async function getFeaturedProducts(): Promise<Product[]>{
+async function getFeaturedProducts(): Promise<Product[]> {
   const response = await api('/products/featured', {
     next: {
       revalidate: 60 * 60, // 1 hour - para buscar novamente as informações na api
@@ -20,8 +21,12 @@ async function getFeaturedProducts(): Promise<Product[]>{
   return products
 }
 
+export const metadata: Metadata = {
+  title: 'Home'
+}
+
 export default async function Home() {
-  
+
   // server component
   // highlighteProduct - primeiro produto
   // otherProducts - demais produtos
