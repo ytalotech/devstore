@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { Search, ShoppingBag } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
+import { useCart } from "@/contexts/cart-context";
+import { CartWidget } from "./cart-widget";
 
 export default function Header() {
+  
     return (
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-5">
@@ -17,10 +20,7 @@ export default function Header() {
           </form>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <ShoppingBag className="h-4" />
-            <span className="text-sm">Cart (0)</span>
-          </div>
+          <CartWidget/>
 
           <div className="w-px h-4 bg-zinc-700" />
 
