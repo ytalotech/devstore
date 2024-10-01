@@ -11,7 +11,7 @@ export async function GET(
 
     const query = z.string().parse(searchParams.get('q'))
 
-    const products = data.products.find((product) => {
+    const products = data.products.filter((product) => {
         // verifica se inclui a buca do usuario
         return product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     })
